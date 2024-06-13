@@ -1,0 +1,6 @@
+<h2>Log Completion for {{habit.name}}</h2>
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">Log Completion</button>
+</form>

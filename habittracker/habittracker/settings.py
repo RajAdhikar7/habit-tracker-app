@@ -53,7 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'habittracker.urls'
 
-LOGIN_URL = '/login'
+#LOGIN_URL = '/login'
 
 TEMPLATES = [
     {
