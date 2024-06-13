@@ -26,7 +26,32 @@ def add_habit(request):
         return redirect("habit_list")
     return render(request,"habits/add-habits.html",context)
 
+
 @login_required
 def log_completion(request , id):
     habit = get_object_or_404(Habit ,pk = id,user=request.user)
-    form = HabitCompletionForm(request.POST0 or None)
+    form = HabitCompletionForm(request.POST or None)
+    context = {
+        "form":form,
+        "habit":habit
+    }
+    if form.is_valid():
+        habit_event=form.save(commit=False)
+        habit_event.habit=habit
+        habit_event.habit.user=request.user
+        return redirect("habit_list")
+    return render(request,"habits/log_completion.html",context=context)
+
+
+@login_required
+def habit_detail(request , id):
+    habit = get_object_or_404(Habit ,pk = id)
+    context={
+        "habit":habit
+    }
+    return render(request,"habits/detail.html",context=context)
+
+from django.contrib.auth.models import User
+from .models import HabitEvent
+from datetime import date
+

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{%block content%}
+<h2>Habit Details</h2>
+<p>Name: {{ habit.name }}</p>
+<p>Description: {{ habit.description }}</p>
+<p>Difficulty: {{ habit.get_difficulty_display }}</p>
+{%endblock content%}
