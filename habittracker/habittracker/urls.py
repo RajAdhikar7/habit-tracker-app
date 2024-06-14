@@ -18,7 +18,16 @@ from django.contrib import admin
 from django.urls import path ,include 
 from habits.views import list_view
 
+from accounts.views import (
+    login_view,
+    logout_view,
+    register_view
+)
+
 urlpatterns = [
     path('habits/', include('habits.urls')),  # Correct root path
     path('admin/', admin.site.urls),
+    path('login/',login_view),
+    path('logout/',logout_view),
+    path('register/',register_view),
 ]

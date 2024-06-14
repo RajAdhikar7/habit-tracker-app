@@ -1,0 +1,15 @@
+{% if request.user.is_authenticated %}
+    <div style="max-width: 400px; margin: 30px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;">
+        <form method="POST" style="display: flex; flex-direction: column; align-items: center;">
+            {% csrf_token %}
+            <p>Are you sure you want to logout?</p>
+            <button type="submit" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+                Yes, logout.
+            </button>
+        </form>
+    </div>
+{% else %}
+    <p style="text-align: center; margin-top: 30px;">
+        You're not logged in. Would you like to <a href="/login/" style="color: #007bff; text-decoration: none;">login</a>?
+    </p>
+{% endif %}
