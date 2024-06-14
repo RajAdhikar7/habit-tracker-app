@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
   <title>Habit Tracker</title>
+  <link rel="stylesheet" type="text/css" href="{% static './habittracker/static/css/styles.css' %}">
 </head>
 <body>
   <header>
@@ -10,7 +12,7 @@
   <nav>
     <ul>
       <li><a href="{% url 'adding_habit' %}">Add Habit</a></li>
-      </ul>
+    </ul>
   </nav>
   <main>
     {% block content %}{% endblock %}
