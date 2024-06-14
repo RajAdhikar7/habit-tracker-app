@@ -10,7 +10,7 @@ class Habit(models.Model):
         (3, "Hard"),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=255);
     description = models.TextField(blank=True)
     difficulty = models.IntegerField(choices=((1,"Easy"),(2,"Medium"),(3,"Hard")))

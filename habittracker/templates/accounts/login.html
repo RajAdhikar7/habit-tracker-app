@@ -3,16 +3,16 @@
         <form method="POST" style="display: flex; flex-direction: column;">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" style="padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
-                Register
+            <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+                Login
             </button>
         </form>
         <p style="text-align: center; margin-top: 20px;">
-            Already have an account? Please <a href="/login" style="color: #007bff; text-decoration: none;">Login</a>
+            Need an account? Please <a href="/register" style="color: #28a745; text-decoration: none;">Register</a>
         </p>
     </div>
 {% else %}
     <p style="text-align: center; margin-top: 30px;">
-        You're already logged in and cannot register. Would you like to <a href="/logout/" style="color: #007bff; text-decoration: none;">logout</a>?
+        You're already logged in. Would you like to <a href="/logout/" style="color: #007bff; text-decoration: none;">logout</a>?
     </p>
 {% endif %}
