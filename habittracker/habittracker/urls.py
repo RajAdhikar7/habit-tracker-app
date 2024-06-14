@@ -21,7 +21,8 @@ from habits.views import list_view
 from accounts.views import (
     login_view,
     logout_view,
-    register_view
+    register_view,
+    
 )
 
 urlpatterns = [
