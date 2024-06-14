@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* Import custom Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+    body {
+        background-color: #f0f4f8;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .form-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 40px auto;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+        font-weight: 500;
+        color: #333333;
+        margin-bottom: 20px;
+    }
+
+    .form-container h3 {
+        font-size: 20px;
+        font-weight: 400;
+        color: #555555;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .form-container form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-container .formset-form {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .form-container button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+        align-self: flex-start;
+    }
+
+    .form-container button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .message {
+        color: green;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="form-container">
+    <h2>Update Habit</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <h3>Habit Events</h3>
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div class="formset-form">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+        <button type="submit">Save</button>
+    </form>
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+</div>
+{% endblock %}

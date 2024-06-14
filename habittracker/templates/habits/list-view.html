@@ -4,15 +4,23 @@
   <div style="background-color: black; color: white; padding: 20px; border-radius: 10px;">
     <h1>Your Habits</h1>
     <ul style="list-style-type: none; padding: 0;">
-      {% for x in object_list %}
-        {% if x.name %}
+      {% for habit in object_list %}
+        {% if habit.name %}
           <li style="margin-bottom: 20px;">
-            <h2 style="margin: 0 0 10px;">{{ x.name }}</h2>
-            <p style="margin: 0 0 5px;">{{ x.description }}</p>
-            <p style="margin: 0;">Difficulty of the habit is - {{ x.get_difficulty_display }}</p>
+            <h2 style="margin: 0 0 10px;">{{ habit.name }}</h2>
+            <p style="margin: 0 0 5px;">{{ habit.description }}</p>
+            <p style="margin: 0;">Difficulty of the habit is - {{ habit.get_difficulty_display }}</p>
+            <ul style="list-style-type: none; padding: 0;">
+              {% for event in habit.habitevent_set.all %}
+                <li style="margin-bottom: 5px;">Habit Completed On - {{ event.date }}</li>
+              {% empty %}
+                <li style="margin-bottom: 5px;">No completions recorded</li>
+              {% endfor %}
+            </ul>
           </li>
         {% endif %}
       {% endfor %}
     </ul>
   </div>
 {% endblock %}
+
